@@ -7,8 +7,8 @@ public class Main{
         for(int i = 0;i < n;i++){
             arr[i] = sc.nextInt();
         }
-        MergeSorter mergesorter = new MergeSorter();
-        mergesorter.sort(arr);
-        System.out.println(mergesorter);
+        QuickSorter quickSorter = new QuickSorter();
+        quickSorter.sort(arr);
+        System.out.println(quickSorter);
     }
 }
