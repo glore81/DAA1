@@ -66,9 +66,7 @@ public class DeterministicSorter {
     private int partition(int[] arr, int low, int high, int pivotValue){
         for(int i = low; i <= high; i++){
             if(arr[i] == pivotValue){
-                int temp = arr[i];
-                arr[i] = arr[high];
-                arr[high] = temp;
+                swap(arr, i, high);
                 break;
             }
         }
