@@ -2,10 +2,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Random;
 
 public class Experiment {
-    private static final String CSV = "results.csv";
+    private static final String CSV = "results/results.csv";
     private static final Random random = new Random();
 
     private static final int[] SIZES = {100, 500, 1000, 5000, 10000, 50000, 100000};
@@ -15,7 +16,7 @@ public class Experiment {
         System.out.println("Starting performance experiments...");
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(CSV))){
-            writer.println("Algorithm,InputType,Size,ExecutionTimeNs,ExecutionTimeMs,Comparisons,MaxDepth");
+            writer.println("Algorithm, InputType, Size, ExecutionTimeNs, ExecutionTimeMs, Comparisons, MaxDepth");
 
             runSortingExperiments(writer);
             runSelectExperiments(writer);
@@ -65,9 +66,9 @@ public class Experiment {
                 long avgQuickComp = totalQuickComp /  RUNS_PER_SIZE;
                 long avgQuickDepth = totalQuickDepth / RUNS_PER_SIZE;
 
-                writer.printf("MergeSort, %s ,%d, %d, %.4f, %d, %d%n",
+                writer.printf(Locale.US, "MergeSort, %s, %d, %d, %.4f, %d, %d%n",
                         inputType,size,avgMergeTime, avgMergeTime/1e6,avgMergeComp, avgMergeDepth);
-                writer.printf("QuickSort, %s ,%d, %d, %.4f, %d, %d%n",
+                writer.printf(Locale.US, "QuickSort, %s, %d, %d, %.4f, %d, %d%n",
                         inputType,size,avgQuickTime, avgQuickTime/1e6,avgQuickComp, avgQuickDepth);
             }
         }
@@ -88,7 +89,7 @@ public class Experiment {
                 totalTime += (end-start);
             }
             long avgTime = totalTime / RUNS_PER_SIZE;
-            writer.printf("DeterministicSelector, Random,  %d, %d, %.4f, 0, 0%n", size, totalTime, avgTime / 1e6);
+            writer.printf(Locale.US, "DeterministicSelector, Random, %d, %d, %.4f, 0, 0%n", size, avgTime, avgTime / 1e6);
         }
     }
 
@@ -107,7 +108,7 @@ public class Experiment {
                 totalTime += (end-start);
         }
             long avgTime = totalTime / RUNS_PER_SIZE;
-            writer.printf("ClosestPair, RandomPoints ,%d, %d, %.4f, 0, 0%n", size, totalTime, avgTime / 1e6);
+            writer.printf(Locale.US, "ClosestPair, RandomPoints, %d, %d, %.4f, 0, 0%n", size, avgTime, avgTime / 1e6);
         }
     }
 
