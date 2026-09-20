@@ -17,6 +17,8 @@ public class SortingTester {
         test(algorithm, "Sorted Array",generateSortedArray( ARR_SIZE));
         test(algorithm, "Reverse Sorted Array",generateReverseArray(ARR_SIZE));
         test(algorithm, "Duplicate Array",generateDuplicateArray(ARR_SIZE));
+        test(algorithm, "Empty Array", new int[]{});
+        test(algorithm, "Single Element Array", new int[]{4});
     }
 
     private static void test(String algorithm, String testName, int[] originalArray){
