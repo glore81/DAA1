@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class ClosestPairSolver {
-    private double bruteForce(Point[] points, int low, int high){
+    public double bruteForce(Point[] points, int low, int high){
         double minDist = Double.MAX_VALUE;
 
         for(int i = low; i < high; i++){
