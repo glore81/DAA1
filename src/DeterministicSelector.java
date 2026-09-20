@@ -1,4 +1,4 @@
-public class DeterministicSorter {
+public class DeterministicSelector {
     public int select(int[] arr, int k){
         if (arr == null || k < 0 || k >= arr.length){
             throw new IllegalArgumentException("Invalid arrguments");
